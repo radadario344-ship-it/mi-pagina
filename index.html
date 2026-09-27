@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Página Web</title>
+
+
+    <style>
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+
+        /* =========================
+           MENÚ
+        ========================= */
+
+        header {
+            background: #020617;
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+
+        /* =========================
+           INICIO
+        ========================= */
+
+        .inicio {
+            min-height: 85vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+
+        .contenido {
+            max-width: 750px;
+        }
+
+
+        .contenido h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+
+        .contenido h1 span {
+            color: #38bdf8;
+        }
+
+
+        .contenido p {
+            color: #cbd5e1;
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           BOTONES
+        ========================= */
+
+        .boton {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 14px 28px;
+
+            background: #38bdf8;
+            color: #020617;
+
+            text-decoration: none;
+
+            border: none;
+            border-radius: 10px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .boton:hover {
+            background: #7dd3fc;
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 30px rgba(56, 189, 248, 0.3);
+        }
+
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            padding: 90px 8%;
+        }
+
+
+        section h2 {
+            text-align: center;
+
+            color: #38bdf8;
+
+            font-size: 35px;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           SOBRE MÍ
+        ========================= */
+
+        .sobre-mi {
+            background: #111827;
+            text-align: center;
+        }
+
+
+        .sobre-mi p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #cbd5e1;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
+        .tarjetas {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .tarjeta {
+            background: #1e293b;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            border: 1px solid #334155;
+
+            transition: 0.3s;
+        }
+
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+
+            border-color: #38bdf8;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .tarjeta h3 {
+            color: #7dd3fc;
+
+            margin-bottom: 15px;
+
+            font-size: 22px;
+        }
+
+
+        .tarjeta p {
+            color: #cbd5e1;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           MENÚS DESPLEGABLES
+        ========================= */
+
+        .desplegable {
+            max-width: 700px;
+
+            margin: 20px auto;
+
+            background: #1e293b;
+
+            border-radius: 12px;
+
+            border: 1px solid #334155;
+
+            overflow: hidden;
+        }
+
+
+        .desplegable summary {
+            padding: 20px;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: white;
+
+            background: #1e293b;
+
+            transition: 0.3s;
+        }
+
+
+        .desplegable summary:hover {
+            background: #334155;
+
+            color: #38bdf8;
+        }
+
+
+        .contenido-desplegable {
+            padding: 20px;
+
+            border-top: 1px solid #334155;
+
+            color: #cbd5e1;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PROYECTOS
+        ========================= */
+
+        .lista {
+            list-style: none;
+        }
+
+
+        .lista li {
+            margin: 10px 0;
+
+            padding: 12px;
+
+            background: #334155;
+
+            border-radius: 8px;
+
+            transition: 0.3s;
+        }
+
+
+        .lista li:hover {
+            background: #38bdf8;
+
+            color: #020617;
+        }
+
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contacto {
+            background: #020617;
+
+            text-align: center;
+        }
+
+
+        .datos-contacto {
+            max-width: 450px;
+
+            margin: auto;
+
+            background: #1e293b;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            border: 1px solid #334155;
+        }
+
+
+        .datos-contacto p {
+            margin: 18px 0;
+
+            color: #cbd5e1;
+
+            font-size: 17px;
+        }
+
+
+        .datos-contacto strong {
+            color: #38bdf8;
+        }
+
+
+        /* =========================
+           NÚMERO DE WHATSAPP
+        ========================= */
+
+        .whatsapp {
+            color: #25D366;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .whatsapp:hover {
+            color: #6ee7a0;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           JUEGOS
+        ========================= */
+
+        .juegos {
+            text-align: center;
+        }
+
+
+        .juego {
+            display: inline-block;
+
+            width: 250px;
+
+            margin: 10px;
+
+            padding: 25px;
+
+            background: #1e293b;
+
+            border-radius: 15px;
+
+            border: 1px solid #334155;
+
+            transition: 0.3s;
+        }
+
+
+        .juego:hover {
+            transform: scale(1.05);
+
+            border-color: #38bdf8;
+        }
+
+
+        .juego h3 {
+            color: #7dd3fc;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #020617;
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #64748b;
+
+            border-top: 1px solid #1e293b;
+        }
+
+
+        /* =========================
+           CELULARES
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .contenido h1 {
+                font-size: 40px;
+            }
+
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+
+            section {
+                padding: 60px 5%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MENÚ
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            🌐 MiWeb
+        </div>
+
+
+        <nav>
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#sobre-mi">
+                Sobre mí
+            </a>
+
+            <a href="#proyectos">
+                Proyectos
+            </a>
+
+            <a href="#juegos">
+                Juegos
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         INICIO
+    ========================== -->
+
+    <section class="inicio" id="inicio">
+
+        <div class="contenido">
+
+            <h1>
+                Hola, soy
+                <span>Programador</span>
+            </h1>
+
+
+            <p>
+
+                Bienvenido a mi página web.
+
+                Estoy aprendiendo programación,
+                desarrollo web, HTML y CSS.
+
+            </p>
+
+
+            <a href="#sobre-mi" class="boton">
+
+                Conocer más
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SOBRE MÍ
+    ========================== -->
+
+    <section class="sobre-mi" id="sobre-mi">
+
+        <h2>
+            👤 Sobre mí
+        </h2>
+
+
+        <p>
+
+            Hola. Estoy aprendiendo a crear páginas web
+            utilizando HTML y CSS desde el Bloc de notas.
+
+            Mi objetivo es aprender programación y crear
+            mis propios proyectos.
+
+        </p>
+
+
+        <details class="desplegable">
+
+            <summary>
+                📚 Más información
+            </summary>
+
+
+            <div class="contenido-desplegable">
+
+                <p>
+
+                    Actualmente estoy aprendiendo cómo
+                    funcionan las páginas web, los estilos,
+                    los enlaces, los menús y diferentes
+                    elementos HTML.
+
+                </p>
+
+            </div>
+
+        </details>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROYECTOS
+    ========================== -->
+
+    <section id="proyectos">
+
+        <h2>
+            💻 Mis proyectos
+        </h2>
+
+
+        <details class="desplegable">
+
+            <summary>
+                🌐 Proyecto 1 - Mi primera página
+            </summary>
+
+
+            <div class="contenido-desplegable">
+
+                <p>
+
+                    Esta es mi primera página web creada
+                    utilizando HTML y CSS.
+
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <details class="desplegable">
+
+            <summary>
+                🎨 Proyecto 2 - Diseño web
+            </summary>
+
+
+            <div class="contenido-desplegable">
+
+                <p>
+
+                    Un proyecto para practicar colores,
+                    botones, tarjetas y diseños.
+
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <details class="desplegable">
+
+            <summary>
+                🚀 Proyecto 3 - Próximamente
+            </summary>
+
+
+            <div class="contenido-desplegable">
+
+                <p>
+
+                    Aquí colocaré uno de mis próximos
+                    proyectos.
+
+                </p>
+
+            </div>
+
+        </details>
+
+    </section>
+
+
+
+    <!-- =========================
+         JUEGOS
+    ========================== -->
+
+    <section class="juegos" id="juegos">
+
+        <h2>
+            🎮 Mis juegos
+        </h2>
+
+
+        <div class="juego">
+
+            <h3>
+                Minecraft
+            </h3>
+
+            <p>
+                Uno de mis juegos favoritos.
+            </p>
+
+        </div>
+
+
+        <div class="juego">
+
+            <h3>
+                Roblox
+            </h3>
+
+            <p>
+                Otro juego que me gusta.
+            </p>
+
+        </div>
+
+
+        <div class="juego">
+
+            <h3>
+                Otros
+            </h3>
+
+            <p>
+                Próximamente agregaré más.
+            </p>
+
+        </div>
+
+
+        <details class="desplegable">
+
+            <summary>
+                🎮 Ver más información
+            </summary>
+
+
+            <div class="contenido-desplegable">
+
+                <p>
+
+                    Aquí puedo colocar información,
+                    imágenes, enlaces o cualquier otra
+                    cosa relacionada con mis juegos.
+
+                </p>
+
+            </div>
+
+        </details>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACTO
+    ========================== -->
+
+    <section class="contacto" id="contacto">
+
+        <h2>
+            📞 Contacto
+        </h2>
+
+
+        <details class="desplegable">
+
+            <summary>
+                📩 Mostrar mis datos de contacto
+            </summary>
+
+
+            <div class="datos-contacto">
+
+                <p>
+
+                    📱
+
+                    <strong>
+                        WhatsApp:
+                    </strong>
+
+                    <a
+                        class="whatsapp"
+                        href="https://wa.me/573018215536"
+                        target="_blank"
+                    >
+
+                        +57 301 8215536
+
+                    </a>
+
+                </p>
+
+
+                <p>
+
+                    📧
+
+                    <strong>
+                        Correo:
+                    </strong>
+
+                    ejemplo@gmail.com
+
+                </p>
+
+
+                <p>
+
+                    📍
+
+                    <strong>
+                        Ciudad:
+                    </strong>
+
+                    Colombia
+
+                </p>
+
+            </div>
+
+        </details>
+
+    </section>
+
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
+
+    <footer>
+
+        © 2026 MiWeb
+
+        <br><br>
+
+        Creada con HTML + CSS
+
+    </footer>
+
+
+</body>
+
+</html>
